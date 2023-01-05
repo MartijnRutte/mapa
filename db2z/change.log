@@ -1,3 +1,39 @@
+--2023-01-03--------------------------------------------------------------------
+Changed...
+
+	(expression (operator expression)*)
+
+...to...
+
+	(expression ((operator expression) | INTEGERLITERAL)*)
+	
+...in parser rule valuesList1 to deal with hitherto unseen syntax...
+
+	INSERT INTO WEATHER VALUES
+		(NEWCW.CITY, 
+		1.8*NEWCW.TEMPC+32)
+
+...where +32 was lexed as a single token, breaking the
+parser rule valuesList1.  I don't have access to a DB2
+instance to test if this is a problem with the test case
+or not, so here we are.  If you're writing an interpreter
+you'll have to deal with this modified rule's handling
+of an optional operator.
+
+--2022-12-28--------------------------------------------------------------------
+Added toleration for SQL/PL in ALTER and CREATE PROCEDURE statement rules per 
+suggestion by Martijn Rutte.
+
+This entailed adding ANTLR lexer modes for native SQL and external stored
+procedures, and new parser rules for ALTER and CREATE of native SQL stored
+procedures.
+
+Instead of native SQL stored procedure ALTER and CREATE resulting in error
+messages, the SQL/PL embedded in the statements ends up falling into a parser
+rule named sqlRoutineBody which contains the tokens in the rule probablySQLPL.
+WRAPPED SQL/PL is found in the rule obfuscatedStatementText which again
+contains the tokens (such as they are) in the probablySQLPL rule.
+
 --2022-12-06--------------------------------------------------------------------
 Removed '+' modifier in freeBlock per suggestion by Martijn Rutte.  Its absence
 makes rule processing easier.
