@@ -1,3 +1,19 @@
+--2023-02-10--------------------------------------------------------------------
+ANTLR 4.11.1 migration.  Makefile, manifest file, tester script modified to use
+new antlr-4.11.1-complete.jar file.  JCLParser.jar regenerated.
+
+--2023-02-04--------------------------------------------------------------------
+Added obsolete DD DCB parameters BUFRQ, CODE, and SOWA.  The first and last
+are for QTAM only, the second is for paper tape.  My guess is these are still
+tolerated, so just in case someone is processing ancient JCL I added them.
+
+--2023-02-03--------------------------------------------------------------------
+Added ROLL parameter to JOB and EXEC statements.  This is old, obsolete, and
+still tolerated.
+
+Added HIARCHY parameter to DD statement.  This is old, obsolete, and probably
+still tolerated.
+
 --2022-03-03--------------------------------------------------------------------
 Added PROCLIB parameter to JCLLIB statement.  No idea how
 I missed that as it's been there since z/OS 2.1.

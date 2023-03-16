@@ -111,6 +111,7 @@ SLASH
 
 CONCATOP
 	: '||'
+	| BANG BANG
 	;
 
 DOT
@@ -176,24 +177,6 @@ SET_STATEMENT_TERMINATOR
 		String text = getText();
 		String textStripped = text.stripTrailing();
 		statementTerminator = new String(textStripped.substring(textStripped.length() - 1));
-	}
-	->channel(COMMENTS)
-	;
-
-/*
-And apparently there's this alternate syntax...
-
-	#terminator=@#
-
-...which I can't find documented anywhere.
-*/
-SET_STATEMENT_TERMINATOR2
-	: ('#terminator' EQ ~[\n\r] '#' WS? NEWLINE)
-	{
-		String text = getText();
-		String textStripped = text.stripTrailing();
-		statementTerminator = 
-			new String(textStripped.substring(textStripped.length() - 2,textStripped.length() - 1));
 	}
 	->channel(COMMENTS)
 	;
@@ -907,7 +890,7 @@ NO
 	;
 
 NODEFER
-	: N O D F E R
+	: N O D E F E R
 	;
 
 NONE
