@@ -2166,7 +2166,7 @@ createTableColumnDefinition
 	asSecurityLabelClause?
 	implicitlyHiddenClause?
 	inlineLengthClause?
-	)
+	)+
 	;
 
 editprocClause
