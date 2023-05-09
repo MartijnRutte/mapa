@@ -3834,7 +3834,7 @@ createIndexOptionList
 	| (PARTITIONED)
 	| paddedOption
 	| compressOption
-	| usingSpecification2
+	| usingSpecification1
 	| freeSpecification
 	| gbpcacheSpecification
 	| defineOption
