@@ -4600,7 +4600,7 @@ rowChangeExpression
 	;
 
 sequenceReference
-	: (NEXT | PREVIOUS) VALUE FOR tableName
+	: (((NEXT | PREVIOUS) VALUE) | NEXTVAL | PREVVAL) FOR tableName
 	;
 
 functionInvocation
