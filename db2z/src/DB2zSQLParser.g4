@@ -3703,6 +3703,7 @@ alterTableOptionList
 	| (DROP COLUMN? columnName RESTRICT)
 	| (ADD periodDefinition)
 	| (ADD (uniqueConstraint | referentialConstraint | checkConstraint))
+	| (uniqueConstraint)
 	| (referentialConstraint)
 	| (DROP ((PRIMARY KEY) | ((UNIQUE | (FOREIGN KEY) | CHECK | CONSTRAINT) constraintName)))
 	| (ADD partitioningClause)
