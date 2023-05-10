@@ -4569,7 +4569,7 @@ expression
 	| olapSpecification
 	| rowChangeExpression
 	| sequenceReference
-	| ((operator | INTEGERLITERAL) expression)
+	| ((operator | INTEGERLITERAL) expression?)
 	| ((functionInvocation
 		| LPAREN expression RPAREN
 		| labeledDuration
@@ -4588,7 +4588,7 @@ expression
 		| olapSpecification
 		| rowChangeExpression
 		| sequenceReference)
-		((operator | INTEGERLITERAL) expression)*)
+		((operator | INTEGERLITERAL) expression?)*)
 	)
 	;
 
