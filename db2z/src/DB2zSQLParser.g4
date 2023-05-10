@@ -1350,7 +1350,7 @@ grantSystemStatement
 grantTableStatement
 	: (
 	GRANT grantTableAuthority (COMMA grantTableAuthority)*
-	ON TABLE? tableName
+	ON TABLE? tableName (COMMA tableName)*
 	TO
 	grantee (COMMA grantee)*
 	withGrantOption?
