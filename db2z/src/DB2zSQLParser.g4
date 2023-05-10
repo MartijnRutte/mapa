@@ -1967,7 +1967,7 @@ dropTablespaceClause
 	;
 
 dropTriggerClause
-	: (TRIGGER triggerName)
+	: (TRIGGER triggerName RESTRICT?)
 	;
 
 dropTrustedContextClause
