@@ -6435,6 +6435,10 @@ havingClause
 	: HAVING searchCondition
 	;
 
+/* Martijn Rutte. Seemingly undocumented limit clause... but works alongside group by/having etc. clauses in the subselect */
+limitClause
+	: LIMIT INTEGERLITERAL
+	;
 groupingExpression
 	: (expression (COMMA expression)*)
 	;
@@ -6482,6 +6486,7 @@ selectClause
 	)
 	;
 
+/* Martijn Rutte. Added limitClause, may be used instead of offsetClause or fetchClause, but not together with. Cf. comment on limitClause */
 subSelect
 	: (
 	selectClause
@@ -6490,11 +6495,11 @@ subSelect
 	groupByClause?
 	havingClause?
 	orderByClause?
-	offsetClause?
-	fetchClause?
+	((offsetClause | fetchClause) | limitClause)?
 	)
 	;
 
+/* Martijn Rutte. Maybe limitClause needed with this one too? */
 selectIntoStatement
 	: (
 	(WITH commonTableExpression (COMMA commonTableExpression)*)?
