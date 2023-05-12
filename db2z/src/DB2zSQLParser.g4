@@ -5683,8 +5683,9 @@ namespacePrefix
 	;
 
 timeZoneSpecificExpression
-	: timeZoneExpressionSubset
-	((AT LOCAL) | (AT TIME ZONE timeZoneExpressionSubset))
+	: timeZoneExpressionSubset 
+	(integerInParens?)
+	((AT LOCAL) | (AT TIME ZONE timeZoneExpressionSubset) | ((WITH | WITHOUT) TIME ZONE))
 	;
 
 timeZoneExpressionSubset
