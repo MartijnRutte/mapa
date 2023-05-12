@@ -3861,6 +3861,7 @@ createLobTablespaceOptionList
 	| defineOption
 	| dssizeOption
 	| gbpcacheSpecification
+	| insertAlgorithmOption
 	| lockmaxOption
 	| locksizeOption
 	| loggedOption
