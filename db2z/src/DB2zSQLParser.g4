@@ -6352,12 +6352,12 @@ nestedTableExpression
 	;
 
 /**/
+/* Martijn Rutte. mergeStatement between parenthesis, just like insertStatement */
 dataChangeTableReference
 	: (
-	(FINAL TABLE LPAREN insertStatement RPAREN correlationClause?)
+	(FINAL TABLE LPAREN (insertStatement | mergeStatement) RPAREN correlationClause?)
 	| ((FINAL | OLD) TABLE searchedUpdate)
 	| (OLD TABLE searchedDelete)
-	| (FINAL TABLE mergeStatement)
 	)
 	;
 
