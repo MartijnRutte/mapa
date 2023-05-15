@@ -4627,6 +4627,7 @@ scalarFunctionInvocation
 	| aiAnalogyFunction
 	| aiSemanticClusterFunction
 	| aiSimilarityFunction
+	| extractFunction
 	| ((schemaName DOT)? scalarFunction LPAREN (expression (COMMA expression)*)? RPAREN (AS NONNUMERICLITERAL)?)
 	)
 	;
@@ -5380,6 +5381,42 @@ aiSimilarityExpression1
 
 aiSimilarityExpression2
 	: aiSimilarityExpression
+	;
+
+extractFunction
+	: (
+	EXTRACT LPAREN 
+	(datePrefix | timePrefix | timezonePrefix)
+	FROM 
+	(literal | columnName | hostVariable)
+	RPAREN
+	)
+	;
+
+datePrefix
+	: (
+	YEAR
+	| MONTH
+	| DAY
+	)
+	;
+
+timePrefix
+	: (
+	HOUR
+	| MINUTE
+	| SECOND
+	)
+	;
+
+timezonePrefix
+	: (
+	HOUR
+	| MINUTE
+	| SECOND
+	| TIMEZONE_HOUR
+	| TIMEZONE_MINUTE
+	)
 	;
 
 xmlelementFunction
