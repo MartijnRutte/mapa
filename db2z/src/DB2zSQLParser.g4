@@ -2197,7 +2197,7 @@ restrictOnDropClause
 	;
 
 ccsidClause1
-	: (CCSID (ASCII | EBCDIC | UNICODE))
+	: (CCSID (ASCII | EBCDIC | UNICODE)?)
 	;
 
 ccsidClause2
@@ -2621,9 +2621,12 @@ createFunctionStatementSourcedOptions
 	)
 	;
 
+/* Martijn Rutte. If I understand correctly, the forDataQualifier and ccsidClauses apply to both inline and compiled scalar functions.
+   Do not know about sourced functions, though... Newbie to Db2 z/OS
+*/
 inlineSqlScalarFunctionDefinition
 	: (
-	RETURNS functionDataType languageOption1?
+	RETURNS functionDataType ((ccsidClause1 forDataQualifier) | (forDataQualifier ccsidClause1))? languageOption1?
 	createFunctionStatementInlineSqlScalarOptions+
 	sqlRoutineBody
 	)
@@ -2642,9 +2645,12 @@ createFunctionStatementInlineSqlScalarOptions
 	)
 	;
 
+/* Martijn Rutte. If I understand correctly, the forDataQualifier and ccsidClauses apply to both inline and compiled scalar functions.
+   Do not know about sourced functions, though... Newbie to Db2 z/OS
+*/
 compiledSqlScalarFunctionDefinition
 	: (
-	RETURNS functionDataType versionOption?
+	RETURNS functionDataType ((ccsidClause1 forDataQualifier) | (forDataQualifier ccsidClause1))? versionOption? 
 	createFunctionStatementCompiledSqlScalarOptions+
 	sqlRoutineBody
 	)
