@@ -1,3 +1,10 @@
+/* Martijn Rutte. Something going wrong with recognition of TEMPLATE part of the utility call
+no viable alternative at input ''TEMPLATE
+We do not need entire DSNUTILU, TEMPLATE, COPY etc. options here, but mapa should not fail on it either.
+Discuss this one with Craig
+Below a nice sample to test with
+*/
+
 SET CURRENT SQLID = PFSE01;
 SET SCHEMA PFSE01;
 
