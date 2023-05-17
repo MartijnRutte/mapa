@@ -3611,7 +3611,7 @@ alterSequenceOptionList
 	| cycleOption
 	| cacheOption
 	| orderOption
-	)
+	) COMMA?
 	;
 
 createSequenceOptionList
@@ -3624,7 +3624,7 @@ createSequenceOptionList
 	| cycleOption
 	| cacheOption
 	| orderOption
-	)
+	) COMMA?
 	;
 
 asTypeOption
