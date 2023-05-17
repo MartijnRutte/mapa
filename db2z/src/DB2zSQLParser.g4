@@ -417,7 +417,7 @@ callStatement
 	CALL (procedureName | hostVariable)
 	(LPAREN (
 		((expression | NULL | (TABLE tableName)) (COMMA (expression | NULL | (TABLE tableName)))*)
-		| (USING DESCRIPTOR hostVariable)
+		| (USING DESCRIPTOR hostVariable)?
 	) RPAREN)?
 	)
 	;
