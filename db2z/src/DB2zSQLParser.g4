@@ -588,9 +588,10 @@ createGlobalTemporaryTableStatement
 	)
 	;
 
+/* Martijn Rutte. INTEGERLITERAL maybe not best option with TYPE, as there seem to be only types 1 and 2... Leave it for now. */
 createIndexStatement
 	: (
-	CREATE (UNIQUE (WHERE NOT NULL)?)? INDEX indexName ON
+	CREATE (TYPE (INTEGERLITERAL))? (UNIQUE (WHERE NOT NULL)?)? INDEX indexName ON
 		((tableName LPAREN 
 		(columnName | keyExpression) (ASC | DESC | RANDOM)?
 		(COMMA (columnName | keyExpression) (ASC | DESC | RANDOM)?)*
