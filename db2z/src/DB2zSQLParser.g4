@@ -3653,11 +3653,11 @@ maxvalueOption
 	;
 
 cycleOption
-	: (NO? CYCLE)
+	: (NO? CYCLE) | NOCYCLE
 	;
 
 cacheOption
-	: ((NO CACHE) | (CACHE INTEGERLITERAL))
+	: (((NO CACHE) | NOCACHE) | (CACHE INTEGERLITERAL))
 	;
 
 orderOption

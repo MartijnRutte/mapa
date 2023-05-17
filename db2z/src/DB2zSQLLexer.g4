@@ -2103,8 +2103,14 @@ CACHE
 	: C A C H E
 	;
 
+NOCACHE
+	: N O C A C H E
+	;
 CYCLE
 	: C Y C L E
+	;
+NOCYCLE
+	: N O C Y C L E
 	;
 
 INCREMENT
