@@ -6113,7 +6113,7 @@ catalogName
 	;
 
 triggerName
-	: identifier
+	: ((schemaName DOT)? identifier)
 	;
 
 contextName
