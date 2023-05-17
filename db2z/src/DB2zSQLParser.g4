@@ -3846,9 +3846,13 @@ createIndexOptionList
 	| gbpcacheSpecification
 	| defineOption
 	| ((INCLUDE | EXCLUDE) NULL KEYS)
-	| (PARTITION BY RANGE? LPAREN
+	| (
+	   (PARTITION BY RANGE? LPAREN
 		partitionElement (usingSpecification2 | freeSpecification | gbpcacheSpecification | dssizeOption)*
 		(COMMA partitionElement (usingSpecification2 | freeSpecification | gbpcacheSpecification | dssizeOption)*)* RPAREN)
+	   |
+	   (LPAREN (PARTITION INTEGERLITERAL COMMA)* PARTITION INTEGERLITERAL RPAREN)
+	  )
 	| bufferpoolOption
 	| closeOption
 	| (DEFER (NO | YES))
