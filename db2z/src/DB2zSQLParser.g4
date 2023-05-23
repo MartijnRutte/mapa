@@ -5889,8 +5889,8 @@ castBuiltInType
 	| (FLOAT (integerInParens | (LPAREN RPAREN)))
 	| REAL
 	| (DOUBLE PRECISION?)
-	| ((((CHARACTER | CHAR) VARYING? ) | VARCHAR) (length | (LPAREN RPAREN))? ccsidQualifier?)
-	| ((((CHARACTER | CHAR) LARGE OBJECT) | CLOB) (length | (LPAREN RPAREN))? ccsidQualifier?)
+	| ((((CHARACTER | CHAR) VARYING? ) | VARCHAR) (length | (LPAREN RPAREN))? (forDataQualifier | ccsidClause2)?)
+	| ((((CHARACTER | CHAR) LARGE OBJECT) | CLOB) (length | (LPAREN RPAREN))? (forDataQualifier | ccsidClause2)?)
 	| ((GRAPHIC | VARGRAPHIC | DBCLOB) (length | (LPAREN RPAREN))? ccsidQualifier?)
 	| (BINARY (integerInParens | (LPAREN RPAREN))?)
 	| (((BINARY VARYING?) | VARBINARY) (integerInParens | (LPAREN RPAREN))?)
