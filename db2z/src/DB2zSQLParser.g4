@@ -3632,7 +3632,7 @@ asTypeOption
 	;
 
 startOption
-	: (START WITH INTEGERLITERAL)
+	: (START WITH (NUMERICLITERAL | INTEGERLITERAL))
 	;
 
 restartOption
