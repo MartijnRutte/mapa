@@ -349,9 +349,10 @@ alterWhichProcedureSQLPL2
 applicationCompatibilityPhrase
 	: (USING APPLICATION COMPATIBILITY CP_APPLCOMPAT_LEVEL)
 	;
+
 alterSequenceStatement
 	: (
-	ALTER SEQUENCE sequenceName alterSequenceOptionList+
+	ALTER SEQUENCE sequenceName alterSequenceOptionList (COMMA? alterSequenceOptionList)*
 	)
 	;
 
@@ -686,7 +687,7 @@ createRoleStatement
 
 createSequenceStatement
 	: (
-	CREATE SEQUENCE sequenceName createSequenceOptionList+
+	CREATE SEQUENCE sequenceName createSequenceOptionList (COMMA? createSequenceOptionList)*
 	)
 	;
 
@@ -3082,8 +3083,8 @@ gbpcacheSpecification
 
 partitionElement
 	: (
-	PARTITION INTEGERLITERAL
-	(ENDING AT? LPAREN 
+	(PARTITION | PART) INTEGERLITERAL
+	(((ENDING AT?) | VALUES) LPAREN 
 		(literal | MAXVALUE | MINVALUE) (COMMA (literal | MAXVALUE | MINVALUE))* 
 	RPAREN INCLUSIVE?)?
 	)
@@ -3604,7 +3605,7 @@ procedureDataType
 	;
 
 alterSequenceOptionList
-	: (
+	:
 	restartOption
 	| incrementOption
 	| minvalueOption
@@ -3612,11 +3613,10 @@ alterSequenceOptionList
 	| cycleOption
 	| cacheOption
 	| orderOption
-	) COMMA?
 	;
 
 createSequenceOptionList
-	: (
+	:
 	asTypeOption
 	| startOption
 	| incrementOption
@@ -3625,7 +3625,6 @@ createSequenceOptionList
 	| cycleOption
 	| cacheOption
 	| orderOption
-	) COMMA?
 	;
 
 asTypeOption
@@ -3847,13 +3846,9 @@ createIndexOptionList
 	| gbpcacheSpecification
 	| defineOption
 	| ((INCLUDE | EXCLUDE) NULL KEYS)
-	| (
-	   (PARTITION BY RANGE? LPAREN
+	| ((PARTITION BY RANGE?)? LPAREN
 		partitionElement (usingSpecification2 | freeSpecification | gbpcacheSpecification | dssizeOption)*
 		(COMMA partitionElement (usingSpecification2 | freeSpecification | gbpcacheSpecification | dssizeOption)*)* RPAREN)
-	   |
-	   (LPAREN (PARTITION INTEGERLITERAL COMMA)* PARTITION INTEGERLITERAL RPAREN)
-	  )
 	| bufferpoolOption
 	| closeOption
 	| (DEFER (NO | YES))
@@ -6545,7 +6540,7 @@ subSelect
 	groupByClause?
 	havingClause?
 	orderByClause?
-	((offsetClause | fetchClause) | limitClause)?
+	((offsetClause | fetchClause))?
 	)
 	;
 
@@ -6668,7 +6663,8 @@ offsetClause
 	;
 
 fetchClause
-	: FETCH (FIRST | NEXT) INTEGERLITERAL? (ROW | ROWS) ONLY
+	: (FETCH (FIRST | NEXT) INTEGERLITERAL? (ROW | ROWS) ONLY)
+	| (LIMIT INTEGERLITERAL ((OFFSET INTEGERLITERAL) | (COMMA INTEGERLITERAL))?)
 	;
 
 identifier
