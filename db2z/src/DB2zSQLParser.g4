@@ -5592,9 +5592,11 @@ defaultClause1
 	)
 	;
 
+/* Martijn Rutte. Think only scalarFunctionInvocation, not functionInvocation, but not sure... */
 defaultClauseAllowables
 	: (
 	literal
+	| scalarFunctionInvocation
 	| SESSION_USER
 	| USER
 	| CURRENT_SQLID
