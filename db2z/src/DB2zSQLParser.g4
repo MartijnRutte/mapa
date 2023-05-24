@@ -2274,7 +2274,7 @@ copyOptionXmlTypeModifiers
 
 asResultTable
 	: (
-	LPAREN (columnName (COMMA columnName)*)? RPAREN AS
+	(LPAREN (columnName (COMMA columnName)*) RPAREN)? AS
 	LPAREN fullSelect RPAREN
 	WITH NO DATA
 	)
