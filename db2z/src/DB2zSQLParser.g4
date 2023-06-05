@@ -1806,7 +1806,7 @@ sqlplSignalValue
 	;
 
 sqlplSignalInformation
-	: ((SET MESSAGE_TEXT EQ literal) | (LPAREN literal RPAREN))
+	: ((SET MESSAGE_TEXT EQ (literal | sqlVariableName)) | (LPAREN literal RPAREN))
 	;
 
 sqlplResignalValue
