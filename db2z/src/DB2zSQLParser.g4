@@ -2656,6 +2656,7 @@ columnDefinitionOptions
 	| asSecurityLabelClause
 	| implicitlyHiddenClause
 	| inlineLengthClause
+	| forDataQualifier
 	)
 	;
 
