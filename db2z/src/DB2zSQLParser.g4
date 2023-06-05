@@ -5237,6 +5237,7 @@ aggregateFunctionInvocation
 	| covarianceSampFunction
 	| cumeDistFunction
 	| listaggFunction
+	| maxFunction
 	| percentileContFunction
 	| percentileDiscFunction
 	| percentRankFunction
@@ -5471,6 +5472,12 @@ listaggFunction
 	RPAREN)?
 	)
 	;
+
+maxFunction
+	: (
+	MAX LPAREN DISTINCT? (expression (COMMA expression)? | SPLAT)  RPAREN
+	)
+;
 
 arrayaggFunction
 	: (arrayaggOrdinaryFunction | arrayaggAssociativeFunction)
