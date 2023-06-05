@@ -6319,7 +6319,7 @@ caseExpression
 	: CASE
 	(searchedWhenClause+ | simpleWhenClause)
 	((ELSE NULL) | (ELSE resultExpression))?
-	END
+	(END | END_CASE)
 	;
 
 resultExpression
