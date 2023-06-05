@@ -285,7 +285,7 @@ allocateCursorStatement
 	;
 
 rsLocatorVariable
-	: hostVariable
+	: (variableName | hostVariable)
 	;
 
 alterDatabaseStatement
