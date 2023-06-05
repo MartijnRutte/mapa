@@ -7107,7 +7107,7 @@ selectClause
 	: (
 	SELECT
 	(ALL | DISTINCT)?
-	(SPLAT | (selectColumns (COMMA selectColumns)*))
+	(SPLAT | (selectColumns (COMMA selectColumns)*) | (functionName LPAREN RPAREN))
 	)
 	;
 
