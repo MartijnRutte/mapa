@@ -6157,6 +6157,7 @@ defaultClause1
 defaultClauseAllowables
 	: (
 	literal
+	| scalarFunctionInvocation
 	| SESSION_USER
 	| USER
 	| CURRENT_SQLID
