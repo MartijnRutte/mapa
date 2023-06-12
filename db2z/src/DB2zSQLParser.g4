@@ -639,11 +639,11 @@ createDatabaseStatement
 createFunctionStatement
 	: (
 	createFunctionStatementExternalScalar
+	| createFunctionStatementSqlTable
 	| createFunctionStatementExternalTable
 	| createFunctionStatementSourced
 	| createFunctionStatementInlineSqlScalar
 	| createFunctionStatementCompiledSqlScalar
-	| createFunctionStatementSqlTable
 	)
 	;
 
